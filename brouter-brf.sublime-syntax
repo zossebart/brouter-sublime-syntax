@@ -1,0 +1,53 @@
+%YAML 1.2
+---
+name: Brouter brf
+file_extensions: [brf]
+scope: source.brf
+
+variables:
+  builtin: (downhillcost|downhillcutoff|uphillcost|uphillcutoff|elevationpenaltybuffer|elevationmaxbuffer|elevationbufferreduce|validForBikes|validForFoot|validForCars|pass1coefficient|pass2coefficient|turnInstructionMode|turnInstructionCatchingRange|turnInstructionRoundabouts|priorityclassifier|turncost|initialcost|costfactor|uphillcostfactor|downhillcostfactor|nodeaccessgranted|initialclassifier|initialcost|classifiermask|nodeaccesgranted)
+
+contexts:
+  main:
+    - include: comment
+
+    - match: \b(true|false)\b
+      scope: constant.language
+
+    - match: \bassign\b
+      scope: keyword.operator.assignment
+      set: [equal_sign_after_varname, varname]
+
+    - match: \b(if|then|else|switch)\b
+      scope: keyword.control
+
+    - match: \b(multiply|add|sub|max|min|equal|greater|lesser)\b
+      scope: keyword.operator.word.arithmetic
+
+    - match: (\b(or|and|xor|not)\b|\||\=)
+      scope: keyword.operator.word.logical
+
+    - match: \b{{builtin}}\b
+      scope: variable.language
+
+    - match: ((\bcontext\:global\b)|(context\:way)|(context\:node))\b
+      scope: markup.heading
+   
+  comment:
+    - match: '(?<!\S)(#).*$\n?'
+      scope: comment.line.number-sign.shell
+      captures:
+        1: punctuation.definition.comment.shell
+
+  equal_sign_after_varname:
+    - match: (\s+\=?\s+)
+      scope: variable.language
+      pop: true
+
+  varname:
+    - match: \b{{builtin}}\b
+      scope: variable.language
+      pop: true
+    - match: \b[A-Za-z_][A-Za-z_0-9]*\b
+      scope: variable.other
+      pop: true
