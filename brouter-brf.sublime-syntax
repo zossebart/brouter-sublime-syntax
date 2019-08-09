@@ -5,7 +5,7 @@ file_extensions: [brf]
 scope: source.brf
 
 variables:
-  builtin: (downhillcost|downhillcutoff|uphillcost|uphillcutoff|elevationpenaltybuffer|elevationmaxbuffer|elevationbufferreduce|validForBikes|validForFoot|validForCars|pass1coefficient|pass2coefficient|turnInstructionMode|turnInstructionCatchingRange|turnInstructionRoundabouts|priorityclassifier|turncost|costfactor|uphillcostfactor|downhillcostfactor|nodeaccessgranted|initialclassifier|initialcost|classifiermask|nodeaccesgranted)
+  builtin: (downhillcost|downhillcutoff|uphillcost|uphillcutoff|elevationpenaltybuffer|elevationmaxbuffer|elevationbufferreduce|validForBikes|validForFoot|validForCars|pass1coefficient|pass2coefficient|turnInstructionMode|turnInstructionCatchingRange|turnInstructionRoundabouts|priorityclassifier|turncost|costfactor|uphillcostfactor|downhillcostfactor|nodeaccessgranted|initialclassifier|initialcost|classifiermask|nodeaccesgranted|processUnusedTags|trafficsourcedensity|istrafficbackbone|maxspeed)
 
 contexts:
   main:
